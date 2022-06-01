@@ -2,3 +2,4 @@ displayName = Ad Libitum - Configurable QoL Solution
 author = Tomat & pbone, Rejuvena Team
 version = 1.0.0
 modReferences = TeaFramework
+homepage=https://discord.gg/ReRVY5g46t
