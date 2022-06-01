@@ -1,0 +1,9 @@
+﻿[Config]
+# Message displayed when the user editing the config cannot save it.
+InsufficientPermissions = "You are not the server host, and thus are not able to modify server configuration!"
+
+# Standard Server Config
+Titles.StandardServerName = "General Server Config"
+Headers.BuffConfiguration = "Buff Configuration"
+Items.MaxBuffSlots.Name = "Max Buff Slots"
+Items.MaxBuffSlots.Tooltip = "Configures the maximum amount of buffs a player may use."

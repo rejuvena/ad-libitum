@@ -1,0 +1,29 @@
+Ad Libitum is a configuration-focused quality-of-life mod for Terraria 1.4. This is the direct successor to pbone's Utils, and will replace it once full feature parity is reached. Additional content will be added, as well.
+
+Every feature included in Ad Libitum may be configured to your liking, including the ability to entirely disable features and items.
+Items from pbone's Utils will be automatically converted, which you may toggle on/off in the config as well.
+The server-side config is used for configuring features that impact other players or provide an unfair advantage over players that do not have the features toggled. The client-side config is used for personal features that let you tweak how mechanics work to your liking.
+
+Ad Libitum adds many features - whether it be items, mechanics, NPCs, etc. - to optionally improve the player's quality of life.
+Such features include, but are not limited to:
+ - an item that collects and sends money directly to your piggy bank (prevents losing money on death);
+ - an item that summons a portable safe, similar to the Money Trough;
+ - bottomless and sponge variants of lava and honey liquids, as well as a liquid combination item;
+ - magnets that further increase your item pickup range;
+ - an item that directly sells picked-up items instead of sending them to your inventory;
+ - configurable auto-swing tweaks, including allowing it to be constantly enabled;
+ - methods to achieve endless buffs;
+ - configurable increased buff slot;
+ - and, of course, lots more.
+
+This mod uses Tea Framework, which must be enabled whenever you want to use this mod.
+Ad Libitum is a mod under the blanket "Rejuvena" project.
+
+Credits:
+ - pbone: Main Developer.
+ - Tomat: Developer, fixer of spritesheets.
+ - Lin-cat: Chinese translation.
+ - Rijam: Additional fixer of spritesheets.
+
+Additional thanks to many idea givers and bug reporters, including... (in no particular order)
+Davlos25, Aikkura, Pins30, CrimsonStorm404, Jerryhhnk, The_Idea, TechTato, Saint Sigma X, IDGCaptainRussia, Candiescence, Satansof2, Rune Zhevitz, ddrake88, BurntChow, Neko the Cat'nt, MassContent, Logantastic, Ertila007, McGunboat, Thomarius, holly!, Hot Bulo4ka, LanToaster, Skip, Alain Zv, moth, sneapeak
