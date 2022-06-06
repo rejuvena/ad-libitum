@@ -7,10 +7,10 @@ using TeaFramework.Features.Utility;
 using Terraria;
 using Terraria.ModLoader;
 
-namespace AdLibitum.Content.PlayerMaxBuffOverrides.Patches
+namespace AdLibitum.Content.Tweaks.MaxBuffsOverride.Patches
 {
     [UsedImplicitly]
-    public class PlayerMaxBuffsDetour : Patch<PlayerMaxBuffsDetour.MaxBuffs>
+    public class MaxBuffsDetour : Patch<MaxBuffsDetour.MaxBuffs>
     {
         public delegate int MaxBuffs(Orig orig);
 

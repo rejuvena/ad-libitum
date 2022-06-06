@@ -6,12 +6,12 @@ using TeaFramework.Features.Patching;
 using TeaFramework.Features.Utility;
 using Terraria;
 
-namespace AdLibitum.Content.PlayerMaxBuffOverrides.Patches
+namespace AdLibitum.Content.Tweaks.MaxBuffsOverride.Patches
 {
     [UsedImplicitly]
-    public sealed class UpdateStarvingStateMaxBuffsEdit : Patch<ILContext.Manipulator>
+    public sealed class UpdateHungerBuffsMaxBuffsEdit : Patch<ILContext.Manipulator>
     {
-        public override MethodInfo ModifiedMethod { get; } = typeof(Player).GetCachedMethod("UpdateStarvingState");
+        public override MethodInfo ModifiedMethod { get; } = typeof(Player).GetCachedMethod("UpdateHungerBuffs");
 
         protected override ILContext.Manipulator PatchMethod =>
             il =>
@@ -26,7 +26,7 @@ namespace AdLibitum.Content.PlayerMaxBuffOverrides.Patches
                 else
                 {
                     Mod.Logger.Info(
-                        "Skipping application of IL patch \"UpdateStarvingStateMaxBuffsEdit\" as user already has a client with the patch applied."
+                        "Skipping application of IL patch \"UpdateHungerBuffsMaxBuffsEdit\" as user already has a client with the patch applied."
                     );
                 }
             };
