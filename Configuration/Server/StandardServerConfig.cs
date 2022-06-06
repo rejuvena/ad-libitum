@@ -1,6 +1,7 @@
-﻿using Terraria.ModLoader.Config;
+﻿using AdLibitum.Configuration;
+using Terraria.ModLoader.Config;
 
-namespace AdLibitum.Common.Configuration.Server
+namespace AdLibitum.Configuration.Server
 {
     [LibitumLabel("Config.Titles.StandardServerName")]
     public sealed class StandardServerConfig : AbstractServerConfig<StandardServerConfig>

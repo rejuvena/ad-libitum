@@ -1,7 +1,7 @@
 ﻿using Terraria;
 using Terraria.ID;
 
-namespace AdLibitum.Common.Utilities
+namespace AdLibitum.Utilities
 {
     public static class NetworkUtilities
     {

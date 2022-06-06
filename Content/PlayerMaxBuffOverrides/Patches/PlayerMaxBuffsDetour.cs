@@ -1,13 +1,13 @@
 ﻿using System.Linq;
 using System.Reflection;
-using AdLibitum.Common.Configuration.Server;
+using AdLibitum.Configuration.Server;
 using JetBrains.Annotations;
 using TeaFramework.Features.Patching;
 using TeaFramework.Features.Utility;
 using Terraria;
 using Terraria.ModLoader;
 
-namespace AdLibitum.Common.Patches
+namespace AdLibitum.Content.PlayerMaxBuffOverrides.Patches
 {
     [UsedImplicitly]
     public class PlayerMaxBuffsDetour : Patch<PlayerMaxBuffsDetour.MaxBuffs>

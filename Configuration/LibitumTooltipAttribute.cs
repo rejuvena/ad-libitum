@@ -1,7 +1,7 @@
 ﻿using System;
 using Terraria.ModLoader.Config;
 
-namespace AdLibitum.Common.Configuration
+namespace AdLibitum.Configuration
 {
     /// <summary>
     ///     Extended version of the normal <see cref="LibitumTooltipAttribute" /> attribute. Automatically localizes keys.

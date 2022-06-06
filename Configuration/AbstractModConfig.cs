@@ -1,7 +1,7 @@
 ﻿using Terraria.ModLoader;
 using Terraria.ModLoader.Config;
 
-namespace AdLibitum.Common.Configuration
+namespace AdLibitum.Configuration
 {
     public abstract class AbstractModConfig<T> : ModConfig
         where T : ModConfig
