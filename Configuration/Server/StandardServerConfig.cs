@@ -1,5 +1,4 @@
-﻿using AdLibitum.Configuration;
-using Terraria.ModLoader.Config;
+﻿using Terraria.ModLoader.Config;
 
 namespace AdLibitum.Configuration.Server
 {

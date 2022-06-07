@@ -11,7 +11,8 @@ namespace AdLibitum.Configuration
     {
         public LibitumLabelAttribute(string label, bool fullKey = false) : base('$' + GetLabel(label, fullKey)) { }
 
-        private static string GetLabel(string label, bool fullKey) {
+        private static string GetLabel(string label, bool fullKey)
+        {
             return fullKey ? label : "Mods.AdLibitum." + label;
         }
     }

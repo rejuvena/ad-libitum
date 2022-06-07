@@ -1,7 +1,7 @@
-﻿using System.Linq;
-using System.Reflection;
-using AdLibitum.Configuration.Server;
+﻿using AdLibitum.Configuration.Server;
 using JetBrains.Annotations;
+using System.Linq;
+using System.Reflection;
 using TeaFramework.Features.Patching;
 using TeaFramework.Features.Utility;
 using Terraria;
@@ -18,8 +18,7 @@ namespace AdLibitum.Content.Tweaks.MaxBuffsOverride.Patches
 
         public override MethodInfo ModifiedMethod { get; } = typeof(Player).GetCachedProperty(nameof(MaxBuffs)).GetMethod;
 
-        protected override MaxBuffs PatchMethod { get; } = orig =>
-        {
+        protected override MaxBuffs PatchMethod { get; } = orig => {
             // Calculate default max amount of buffs + any additional buffs that another mod inserts through a detour.
             // To clarify, subtracting 22 and the max amount of buff slots added by a mod through the ExtraPlayerBuffSlots negates the NORMAL limit.
             // These allows us to safely accomodate any mods that use detours to add additional buff slots for things like accessories.

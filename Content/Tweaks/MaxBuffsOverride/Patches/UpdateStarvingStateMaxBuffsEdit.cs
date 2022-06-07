@@ -1,7 +1,7 @@
-﻿using System.Reflection;
-using JetBrains.Annotations;
+﻿using JetBrains.Annotations;
 using Mono.Cecil.Cil;
 using MonoMod.Cil;
+using System.Reflection;
 using TeaFramework.Features.Patching;
 using TeaFramework.Features.Utility;
 using Terraria;
@@ -14,8 +14,7 @@ namespace AdLibitum.Content.Tweaks.MaxBuffsOverride.Patches
         public override MethodInfo ModifiedMethod { get; } = typeof(Player).GetCachedMethod("UpdateStarvingState");
 
         protected override ILContext.Manipulator PatchMethod =>
-            il =>
-            {
+            il => {
                 ILCursor c = new(il);
 
                 if (c.TryGotoNext(MoveType.After, x => x.MatchLdcI4(22)))
