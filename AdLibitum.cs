@@ -7,8 +7,7 @@ namespace AdLibitum
     [UsedImplicitly]
     public sealed class AdLibitum : TeaMod
     {
-        public static string GetTextValue(string key, params object[] objs)
-        {
+        public static string GetTextValue(string key, params object[] objs) {
             return Language.GetTextValue("Mods.AdLibitum." + key, objs);
         }
     }
