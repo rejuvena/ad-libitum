@@ -1,7 +1,7 @@
-﻿using AdLibitum.Configuration.Server;
-using JetBrains.Annotations;
-using System.Linq;
+﻿using System.Linq;
 using System.Reflection;
+using AdLibitum.Configuration.Server;
+using JetBrains.Annotations;
 using TeaFramework.Features.Patching;
 using TeaFramework.Features.Utility;
 using Terraria;
@@ -20,10 +20,21 @@ namespace AdLibitum.Content.Tweaks.MaxBuffsOverride.Patches
 
         protected override MaxBuffs PatchMethod { get; } = orig =>
         {
-            // Calculate default max amount of buffs + any additional buffs that another mod inserts through a detour.
-            // To clarify, subtracting 22 and the max amount of buff slots added by a mod through the ExtraPlayerBuffSlots negates the NORMAL limit.
-            // These allows us to safely accomodate any mods that use detours to add additional buff slots for things like accessories.
-            return (int) (StandardServerConfig.Config.MaxBuffSlots + orig() - 22 - ModLoader.Mods.Max(x => x.ExtraPlayerBuffSlots));
+            // Objective: override the normal buff limit calculation to use our specialized calculations.
+            // Justification:
+            //   1. We cannot subtract (lower) the buff limit, so it cannot got below 22.
+            //   2. tModLoader's calculation is based off of the largest Mod.ExtraPlayerBuffSlots value, and will promptly ignore ours if a mod increases it more.
+            //   3. The buff limit is not configurable after mods are loaded, normally.
+            // TODO: Provide an option that allows users to enable the typical tModLoader behavior, if they so choose.
+
+            // Reproduce the regular max buff count calculated by tModLoader.
+            int normalMax = (int) (22 - ModLoader.Mods.Max(x => x.ExtraPlayerBuffSlots));
+
+            // Get any additional slots from mods that also override the buff count, this is to support things like mods that want to add slots conditionally.
+            int additionalSlots = orig() - normalMax;
+
+            // Return the new limit, which is our config plus any additional mod buff slots not added through Mod.ExtraPlayerBuffSlots.
+            return (int) (StandardServerConfig.Config.MaxBuffSlots + additionalSlots);
         };
     }
 }
