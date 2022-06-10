@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using System.Reflection;
 using AdLibitum.Configuration.Server;
 using JetBrains.Annotations;
@@ -34,7 +35,7 @@ namespace AdLibitum.Content.Tweaks.MaxBuffsOverride.Patches
             int additionalSlots = orig() - normalMax;
 
             // Return the new limit, which is our config plus any additional mod buff slots not added through Mod.ExtraPlayerBuffSlots.
-            return (int) (StandardServerConfig.Config.MaxBuffSlots + additionalSlots);
+            return (int) Math.Max(0, StandardServerConfig.Config.MaxBuffSlots + additionalSlots);
         };
     }
 }
