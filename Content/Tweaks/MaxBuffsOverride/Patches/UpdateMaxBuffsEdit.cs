@@ -12,8 +12,7 @@ namespace AdLibitum.Content.Tweaks.MaxBuffsOverride.Patches
     public static class UpdateMaxBuffsEdit
     {
         public static ILContext.Manipulator MakeEdit(Mod mod, string className) {
-            return il =>
-            {
+            return il => {
                 ILCursor c = new(il);
 
                 if (c.TryGotoNext(MoveType.After, x => x.MatchLdcI4(22))) {
