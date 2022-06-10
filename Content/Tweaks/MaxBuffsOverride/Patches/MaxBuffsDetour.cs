@@ -26,7 +26,6 @@ namespace AdLibitum.Content.Tweaks.MaxBuffsOverride.Patches
             //   1. We cannot subtract (lower) the buff limit, so it cannot got below 22.
             //   2. tModLoader's calculation is based off of the largest Mod.ExtraPlayerBuffSlots value, and will promptly ignore ours if a mod increases it more.
             //   3. The buff limit is not configurable after mods are loaded, normally.
-            // TODO: Provide an option that allows users to enable the typical tModLoader behavior, if they so choose.
 
             // Reproduce the regular max buff count calculated by tModLoader.
             int normalMax = (int) (22 - ModLoader.Mods.Max(x => x.ExtraPlayerBuffSlots));
