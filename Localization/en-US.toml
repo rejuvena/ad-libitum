@@ -2,8 +2,16 @@
 # Message displayed when the user editing the config cannot save it.
 InsufficientPermissions = "You are not the server host, and thus are not able to modify server configuration!"
 
-# Standard Server Config
-Titles.StandardServerName = "General Server Config"
-Headers.BuffConfiguration = "Buff Configuration"
-Items.MaxBuffSlots.Name = "Max Buff Slots"
-Items.MaxBuffSlots.Tooltip = "Configures the maximum amount of buffs a player may use."
+[Config.Titles] # Config titles.
+StandardServerName = "General Server Config"
+
+[Config.Headers] # Config headers.
+BuffConfiguration = "Buff Configuration"
+
+[Config.ItemName] # Config item names.
+MaxBuffSlotsEnabled = "Configurable Buff Slot Limit"
+MaxBuffSlots = "Maximum Buff Slots"
+
+[Config.ItemTooltip] # Config item tooltips.
+MaxBuffSlotsEnabled = "Determines whether Ad Libitum should forcefully override the buff slot limit to use its configurable slot count.\nIf unchecked, your buff slot limit will not be changed by Ad Libitum.\nIf checked, Ad Libitum will hijack tModLoader's buff slot logic."
+MaxBuffSlots = "Configures the maximum amount of buffs a player may use.\nOnly works if \"Configurable Buff Slot Limit\" is enabled."

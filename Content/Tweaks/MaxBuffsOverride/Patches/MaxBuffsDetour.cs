@@ -19,6 +19,8 @@ namespace AdLibitum.Content.Tweaks.MaxBuffsOverride.Patches
         public override MethodInfo ModifiedMethod { get; } = typeof(Player).GetCachedProperty(nameof(MaxBuffs)).GetMethod;
 
         protected override MaxBuffs PatchMethod { get; } = orig => {
+            if (!StandardServerConfig.Config.MaxBuffSlotsEnabled) return orig();
+
             // Objective: override the normal buff limit calculation to use our specialized calculations.
             // Justification:
             //   1. We cannot subtract (lower) the buff limit, so it cannot got below 22.
