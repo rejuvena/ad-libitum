@@ -1,5 +1,4 @@
-﻿
-[*]
+﻿[*]
 charset = utf-8-bom
 end_of_line = crlf
 trim_trailing_whitespace = false
@@ -9,7 +8,7 @@ indent_size = 4
 
 # Microsoft .NET properties
 csharp_new_line_before_members_in_object_initializers = false
-csharp_new_line_before_open_brace = anonymous_methods,anonymous_types,control_blocks,lambdas,object_collection_array_initalizers,types
+csharp_new_line_before_open_brace = anonymous_types, control_blocks, object_collection_array_initalizers, types
 csharp_preferred_modifier_order = public, private, protected, internal, new, static, abstract, virtual, sealed, readonly, override, extern, unsafe, volatile, async:suggestion
 csharp_space_after_cast = true
 csharp_style_namespace_declarations = block_scoped:suggestion
@@ -66,7 +65,7 @@ dotnet_naming_style.lower_camel_case_style.capitalization = camel_case
 dotnet_naming_style.lower_camel_case_style.required_prefix = _
 dotnet_naming_style.lower_camel_case_style_1.capitalization = camel_case
 dotnet_naming_style.upper_camel_case_style.capitalization = pascal_case
-dotnet_naming_symbols.private_constants_symbols.applicable_accessibilities = local,private
+dotnet_naming_symbols.private_constants_symbols.applicable_accessibilities = local, private
 dotnet_naming_symbols.private_constants_symbols.applicable_kinds = field
 dotnet_naming_symbols.private_constants_symbols.required_modifiers = const
 dotnet_naming_symbols.private_constants_symbols.resharper_applicable_kinds = constant_field
@@ -79,24 +78,24 @@ dotnet_naming_symbols.private_instance_fields_symbols.applicable_kinds = field
 dotnet_naming_symbols.private_static_fields_symbols.applicable_accessibilities = private
 dotnet_naming_symbols.private_static_fields_symbols.applicable_kinds = field
 dotnet_naming_symbols.private_static_fields_symbols.required_modifiers = static
-dotnet_naming_symbols.private_static_readonly_symbols.applicable_accessibilities = local,private
+dotnet_naming_symbols.private_static_readonly_symbols.applicable_accessibilities = local, private
 dotnet_naming_symbols.private_static_readonly_symbols.applicable_kinds = field
-dotnet_naming_symbols.private_static_readonly_symbols.required_modifiers = readonly,static
+dotnet_naming_symbols.private_static_readonly_symbols.required_modifiers = readonly, static
 dotnet_naming_symbols.private_static_readonly_symbols.resharper_applicable_kinds = readonly_field
 dotnet_naming_symbols.private_static_readonly_symbols.resharper_required_modifiers = static
 dotnet_naming_symbols.private_static_readonly_symbols_1.applicable_accessibilities = private
 dotnet_naming_symbols.private_static_readonly_symbols_1.applicable_kinds = field
-dotnet_naming_symbols.private_static_readonly_symbols_1.required_modifiers = static,readonly
+dotnet_naming_symbols.private_static_readonly_symbols_1.required_modifiers = static, readonly
 dotnet_naming_symbols.unity_serialized_field_symbols.applicable_accessibilities = *
-dotnet_naming_symbols.unity_serialized_field_symbols.applicable_kinds = 
+dotnet_naming_symbols.unity_serialized_field_symbols.applicable_kinds =
 dotnet_naming_symbols.unity_serialized_field_symbols.resharper_applicable_kinds = unity_serialised_field
 dotnet_naming_symbols.unity_serialized_field_symbols.resharper_required_modifiers = instance
 dotnet_naming_symbols.unity_serialized_field_symbols_1.applicable_accessibilities = *
-dotnet_naming_symbols.unity_serialized_field_symbols_1.applicable_kinds = 
+dotnet_naming_symbols.unity_serialized_field_symbols_1.applicable_kinds =
 dotnet_naming_symbols.unity_serialized_field_symbols_1.resharper_applicable_kinds = unity_serialised_field
 dotnet_naming_symbols.unity_serialized_field_symbols_1.resharper_required_modifiers = instance
 dotnet_naming_symbols.unity_serialized_field_symbols_2.applicable_accessibilities = *
-dotnet_naming_symbols.unity_serialized_field_symbols_2.applicable_kinds = 
+dotnet_naming_symbols.unity_serialized_field_symbols_2.applicable_kinds =
 dotnet_naming_symbols.unity_serialized_field_symbols_2.resharper_applicable_kinds = unity_serialised_field
 dotnet_naming_symbols.unity_serialized_field_symbols_2.resharper_required_modifiers = instance
 dotnet_style_parentheses_in_arithmetic_binary_operators = never_if_unnecessary:none
