@@ -7,7 +7,7 @@ This mod uses [Tea Framework](https://github.com/rejuvena/tea-framework), and re
 ```bash
 # when cloning, you need to specify the folder name, as tModLoader does not accept improper folder names
 # run this in your ModSources folder
-git clone https://github.com/rejuvena/ad-libitum.git AdLibitum
+git clone https://github.com/rejuvena/ad-libitum.git AdLibitum && cd AdLibitum
 
 # detour dotnet packages
 dotnet restore
