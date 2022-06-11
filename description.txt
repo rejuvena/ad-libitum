@@ -19,6 +19,8 @@ Such features include, but are not limited to:
 This mod uses Tea Framework, which must be enabled whenever you want to use this mod.
 Ad Libitum is a mod under the blanket "Rejuvena" project.
 
+--- Below are the credits for pbone's Utils, join pbone's Discord server as well: https://discord.gg/gK676xCv3q ---
+
 Credits:
  - pbone: Main Developer.
  - Tomat: Developer, fixer of spritesheets.
