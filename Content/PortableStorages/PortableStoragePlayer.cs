@@ -25,10 +25,15 @@ namespace AdLibitum.Content.PortableStorages
             DefendersForgeTracker.Clear();
         }
 
+        // These shouldn't be needed because I'm hijacking Terraria's netmessage
+        /*public override void SendClientChanges(ModPlayer clientPlayer) {
+            base.SendClientChanges(clientPlayer);
+        }
+
         public override void clientClone(ModPlayer clientClone) {
             PortableStoragePlayer psp = clientClone as PortableStoragePlayer;
             psp.SafeTracker = SafeTracker;
             psp.DefendersForgeTracker = DefendersForgeTracker;
-        }
+        }*/
     }
 }

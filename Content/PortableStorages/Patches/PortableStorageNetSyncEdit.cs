@@ -26,10 +26,8 @@ namespace AdLibitum.Content.PortableStorages.Patches
         {
             ILCursor c = new(il);
 
-            FieldInfo fieldToMatch = typeof(Player).GetCachedField("voidLensChest");
-
-            if (!c.TryGotoNext(instr => instr.Match(OpCodes.Ldfld, fieldToMatch)))
-                throw new Exception(" ");
+            if (!c.TryGotoNext(instr => instr.MatchLdfld<Player>("voidLensChest")))
+                throw new Exception("Error applying patch \"PortableStorageNetSyncEdit\": Unable to match ldfld instruction.");
 
             c.EmitDelegate(() =>
             {

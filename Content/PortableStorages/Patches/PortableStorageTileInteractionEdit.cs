@@ -11,10 +11,12 @@ using TeaFramework.Features.Patching;
 using TeaFramework.Features.Utility;
 using Terraria;
 using Terraria.DataStructures;
+using Terraria.ModLoader;
 
 namespace AdLibitum.Content.PortableStorages.Patches
 {
     [UsedImplicitly]
+    [Autoload(false)]
     public class PortableStorageTileInteractionEdit : Patch<ILContext.Manipulator>
     {
         public override MethodInfo ModifiedMethod => typeof(Player).GetCachedMethod("TileInteractionsUse");
@@ -25,7 +27,7 @@ namespace AdLibitum.Content.PortableStorages.Patches
 
             MethodInfo trackedProjRefClear = typeof(TrackedProjectileReference).GetCachedMethod("Clear");
 
-            if (!c.TryGotoNext(instr => instr.Match(OpCodes.Call, trackedProjRefClear)))
+            if (!c.TryGotoNext(instr => instr.MatchCall(trackedProjRefClear)))
                 throw new Exception("Error applying patch \"PortableStorageTileInteractionEdit\": Unable to match call instruction.");
 
             c.EmitDelegate(PortableStorageSystem.ClearModPortableStorages);
