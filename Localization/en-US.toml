@@ -1,4 +1,7 @@
-﻿[Config]
+﻿[ItemName]
+GrotesqueStatuette = "Grotesque Statuette"
+
+[Config]
 # Message displayed when the user editing the config cannot save it.
 InsufficientPermissions = "You are not the server host, and thus are not able to modify server configuration!"
 

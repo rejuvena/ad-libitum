@@ -13,8 +13,7 @@ namespace AdLibitum.Content.Tweaks.MaxBuffsOverride.Patches
     {
         public override MethodInfo ModifiedMethod { get; } = typeof(Player).GetCachedMethod("UpdateHungerBuffs");
 
-        protected override ILContext.Manipulator PatchMethod =>
-            il =>
+        protected override ILContext.Manipulator PatchMethod => il =>
             {
                 ILCursor c = new(il);
 
