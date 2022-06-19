@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Terraria;
 using Terraria.DataStructures;
 
@@ -11,11 +7,13 @@ namespace AdLibitum.Content.PortableStorages.Misc
     public class ModdedPortableStorage
     {
         public int ChestId;
-        public Func<Player, TrackedProjectileReference> GetTrackedProjRef;
+        public int ProjId;
+        public Func<Player, Ref<TrackedProjectileReference>> GetTrackedProjRef;
 
-        public ModdedPortableStorage(int portableStorageId, Func<Player, TrackedProjectileReference> getTrackedProjRef) {
+        public ModdedPortableStorage(int portableStorageId, int projId, Func<Player, Ref<TrackedProjectileReference>> getTrackedProjRef) {
             ChestId = portableStorageId;
             GetTrackedProjRef = getTrackedProjRef;
+            ProjId = projId;
         }
     }
 }

@@ -3,7 +3,7 @@ using JetBrains.Annotations;
 using Mono.Cecil.Cil;
 using MonoMod.Cil;
 using TeaFramework.Features.Patching;
-using TeaFramework.Features.Utility;
+using TeaFramework.Utilities;
 using Terraria;
 using Terraria.ModLoader;
 
@@ -28,7 +28,7 @@ namespace AdLibitum.Content.Tweaks.MaxBuffsOverride.Patches
         [UsedImplicitly]
         public sealed class UpdateHungerBuffsMaxBuffsEdit : Patch<ILContext.Manipulator>
         {
-            public override MethodInfo ModifiedMethod { get; } = typeof(Player).GetCachedMethod("UpdateHungerBuffs");
+            public override MethodBase ModifiedMethod { get; } = typeof(Player).GetCachedMethod("UpdateHungerBuffs");
 
             protected override ILContext.Manipulator PatchMethod => MakeEdit(Mod, "UpdateHungerBuffsMaxBuffsEdit");
         }
@@ -36,7 +36,7 @@ namespace AdLibitum.Content.Tweaks.MaxBuffsOverride.Patches
         [UsedImplicitly]
         public sealed class UpdateStarvingStateMaxBuffsEdit : Patch<ILContext.Manipulator>
         {
-            public override MethodInfo ModifiedMethod { get; } = typeof(Player).GetCachedMethod("UpdateStarvingState");
+            public override MethodBase ModifiedMethod { get; } = typeof(Player).GetCachedMethod("UpdateStarvingState");
 
             protected override ILContext.Manipulator PatchMethod => MakeEdit(Mod, "UpdateStarvingStateMaxBuffsEdit");
         }

@@ -1,36 +1,33 @@
 ﻿using AdLibitum.Content.PortableStorages.Misc;
 using JetBrains.Annotations;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 using TeaFramework.Features.Patching;
-using TeaFramework.Features.Utility;
+using TeaFramework.Utilities;
 using Terraria;
+using Terraria.ModLoader;
 
 namespace AdLibitum.Content.PortableStorages.Patches
 {
     [UsedImplicitly]
+    //[Autoload(false)]
     public class PortableStorageHandleBeingInChestRangeDetour : Patch<PortableStorageHandleBeingInChestRangeDetour.HandleBeingInChestRange> {
         public delegate void HandleBeingInChestRange(Orig orig, Player self);
         public delegate void Orig(Player self);
 
-        public override MethodInfo ModifiedMethod => typeof(Player).GetCachedMethod("HandleBeingInChestRange");
+        public override MethodBase ModifiedMethod => typeof(Player).GetCachedMethod("HandleBeingInChestRange");
 
-        protected override HandleBeingInChestRange PatchMethod => (orig, self) =>
-        {
-            if (self.chest != -1)
+            protected override HandleBeingInChestRange PatchMethod => (orig, self) =>
             {
-                foreach (ModdedPortableStorage mps in PortableStorageSystem.ModdedPortableStorages)
+                if (self.chest != -1)
                 {
-                    if (self.chest != mps.ChestId)
-                        mps.GetTrackedProjRef(self).Clear();
+                    foreach (ModdedPortableStorage mps in PortableStorageSystem.ModdedPortableStorages)
+                    {
+                        if (self.chest != mps.ChestId)
+                            mps.GetTrackedProjRef(self).Value.Clear();
+                    }
                 }
-            }
             
-            orig(self);
-        };
+                orig(self);
+            };
     }
 }

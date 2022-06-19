@@ -2,13 +2,9 @@
 using Mono.Cecil.Cil;
 using MonoMod.Cil;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 using TeaFramework.Features.Patching;
-using TeaFramework.Features.Utility;
+using TeaFramework.Utilities;
 using Terraria;
 using Terraria.DataStructures;
 using Terraria.ModLoader;
@@ -16,21 +12,20 @@ using Terraria.ModLoader;
 namespace AdLibitum.Content.PortableStorages.Patches
 {
     [UsedImplicitly]
-    [Autoload(false)]
+    //[Autoload(false)]
     public class PortableStorageTileInteractionEdit : Patch<ILContext.Manipulator>
-    {
-        public override MethodInfo ModifiedMethod => typeof(Player).GetCachedMethod("TileInteractionsUse");
+    {   
+        public override MethodBase ModifiedMethod => typeof(Player).GetCachedMethod("TileInteractionsUse");
 
         protected override ILContext.Manipulator PatchMethod => il =>
         {
             ILCursor c = new(il);
 
-            MethodInfo trackedProjRefClear = typeof(TrackedProjectileReference).GetCachedMethod("Clear");
-
-            if (!c.TryGotoNext(instr => instr.MatchCall(trackedProjRefClear)))
+            if (!c.TryGotoNext(instr => instr.MatchCall<TrackedProjectileReference>("Clear")))
                 throw new Exception("Error applying patch \"PortableStorageTileInteractionEdit\": Unable to match call instruction.");
-
-            c.EmitDelegate(PortableStorageSystem.ClearModPortableStorages);
+            
+            c.Emit(OpCodes.Ldarg_0);
+            c.Emit(OpCodes.Call, typeof(PortableStorageSystem).GetCachedMethod("ClearModPortableStorages"));
         };
     }
 }

@@ -1,15 +1,10 @@
 ﻿using AdLibitum.Content.PortableStorages.Misc;
 using JetBrains.Annotations;
-using Mono.Cecil.Cil;
 using MonoMod.Cil;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 using TeaFramework.Features.Patching;
-using TeaFramework.Features.Utility;
+using TeaFramework.Utilities;
 using Terraria;
 using Terraria.DataStructures;
 using Terraria.ID;
@@ -18,9 +13,10 @@ using Terraria.ModLoader;
 namespace AdLibitum.Content.PortableStorages.Patches
 {
     [UsedImplicitly]
+    //[Autoload(false)]
     public class PortableStorageNetSyncEdit : Patch<ILContext.Manipulator>
     {
-        public override MethodInfo ModifiedMethod => typeof(Main).GetCachedMethod("TrySyncingMyPlayer");
+        public override MethodBase ModifiedMethod => typeof(Main).GetCachedMethod("TrySyncingMyPlayer");
 
         protected override ILContext.Manipulator PatchMethod => il =>
         {
@@ -35,8 +31,8 @@ namespace AdLibitum.Content.PortableStorages.Patches
 
                 foreach (ModdedPortableStorage mps in PortableStorageSystem.ModdedPortableStorages)
                 {
-                    TrackedProjectileReference localRef = mps.GetTrackedProjRef(Main.LocalPlayer);
-                    TrackedProjectileReference clientRef = mps.GetTrackedProjRef(Main.clientPlayer);
+                    TrackedProjectileReference localRef = mps.GetTrackedProjRef(Main.LocalPlayer).Value;
+                    TrackedProjectileReference clientRef = mps.GetTrackedProjRef(Main.clientPlayer).Value;
 
                     if (localRef != clientRef)
                     {
