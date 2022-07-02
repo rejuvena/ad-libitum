@@ -3,6 +3,8 @@ using AdLibitum.Content.PortableStorages.Net;
 using AdLibitum.Content.PortableStorages.Projectiles;
 using JetBrains.Annotations;
 using System.Collections.Generic;
+using TeaFramework.API;
+using TeaFramework.Utilities;
 using Terraria;
 using Terraria.ID;
 using Terraria.Localization;
@@ -18,8 +20,12 @@ namespace AdLibitum.Content.PortableStorages
         public override void OnModLoad() {
             ModdedPortableStorages = new();
 
-            ModdedPortableStorages.Add(new(-3, ModContent.ProjectileType<FlyingSafe>(), (player) => player.GetModPlayer<PortableStoragePlayer>().SafeTracker));
-            ModdedPortableStorages.Add(new(-4, 0, (player) => player.GetModPlayer<PortableStoragePlayer>().DefendersForgeTracker));
+            // TODO better sounds?
+            ModdedPortableStorages.Add(new(-3, ModContent.ProjectileType<FlyingSafe>(), SoundID.Tink, null,
+                (player) => player.GetModPlayer<PortableStoragePlayer>().SafeTracker));
+            
+            ModdedPortableStorages.Add(new(-4, 0, SoundID.MaxMana, null,
+                (player) => player.GetModPlayer<PortableStoragePlayer>().DefendersForgeTracker));
         }
 
         public override void Unload() {
@@ -32,10 +38,7 @@ namespace AdLibitum.Content.PortableStorages
             {
                 Player player = Main.player[number];
 
-                ModPacket packet = Mod.GetPacket();
-                SyncModdedPortableStorageTrackers mPacket = new();
-                mPacket.WritePacket(packet, new(player));
-                packet.Send();
+                NetUtils.WriteAndSendPacket<SyncModdedPortableStorageTrackers>(Mod as ITeaMod, new ModdedPortableStorageTrackersData(player));
             }
             
             return false;

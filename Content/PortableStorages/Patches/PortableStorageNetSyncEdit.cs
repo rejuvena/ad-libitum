@@ -8,12 +8,10 @@ using TeaFramework.Utilities;
 using Terraria;
 using Terraria.DataStructures;
 using Terraria.ID;
-using Terraria.ModLoader;
 
 namespace AdLibitum.Content.PortableStorages.Patches
 {
     [UsedImplicitly]
-    //[Autoload(false)]
     public class PortableStorageNetSyncEdit : Patch<ILContext.Manipulator>
     {
         public override MethodBase ModifiedMethod => typeof(Main).GetCachedMethod("TrySyncingMyPlayer");

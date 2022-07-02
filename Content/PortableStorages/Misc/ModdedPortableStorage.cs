@@ -1,5 +1,6 @@
 ﻿using System;
 using Terraria;
+using Terraria.Audio;
 using Terraria.DataStructures;
 
 namespace AdLibitum.Content.PortableStorages.Misc
@@ -8,12 +9,20 @@ namespace AdLibitum.Content.PortableStorages.Misc
     {
         public int ChestId;
         public int ProjId;
+        
+        public SoundStyle OpenSound;
+        public SoundStyle CloseSound;
+        
         public Func<Player, Ref<TrackedProjectileReference>> GetTrackedProjRef;
 
-        public ModdedPortableStorage(int portableStorageId, int projId, Func<Player, Ref<TrackedProjectileReference>> getTrackedProjRef) {
+        public ModdedPortableStorage(int portableStorageId, int projId, SoundStyle openSound, SoundStyle? closeSound, Func<Player, Ref<TrackedProjectileReference>> getTrackedProjRef) {
             ChestId = portableStorageId;
-            GetTrackedProjRef = getTrackedProjRef;
             ProjId = projId;
+
+            OpenSound = openSound;
+            CloseSound = closeSound ?? openSound;
+            
+            GetTrackedProjRef = getTrackedProjRef;
         }
     }
 }

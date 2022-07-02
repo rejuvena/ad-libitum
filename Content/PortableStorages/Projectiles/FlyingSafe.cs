@@ -1,11 +1,10 @@
 ﻿using JetBrains.Annotations;
 using Terraria;
-using Terraria.ModLoader;
 
 namespace AdLibitum.Content.PortableStorages.Projectiles
 {
     [UsedImplicitly]
-    public class FlyingSafe : ModProjectile
+    public class FlyingSafe : AbstractPortableStorageProjectile
     {
         public override void SetStaticDefaults() {
             Main.projFrames[Type] = 5;
@@ -19,6 +18,7 @@ namespace AdLibitum.Content.PortableStorages.Projectiles
         }
 
         public override void AI() {
+            Projectile.velocity = Microsoft.Xna.Framework.Vector2.Zero;
         }
     }
 }

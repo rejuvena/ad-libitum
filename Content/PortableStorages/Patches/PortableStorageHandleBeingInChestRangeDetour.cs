@@ -4,17 +4,15 @@ using System.Reflection;
 using TeaFramework.Features.Patching;
 using TeaFramework.Utilities;
 using Terraria;
-using Terraria.ModLoader;
 
 namespace AdLibitum.Content.PortableStorages.Patches
 {
     [UsedImplicitly]
-    //[Autoload(false)]
     public class PortableStorageHandleBeingInChestRangeDetour : Patch<PortableStorageHandleBeingInChestRangeDetour.HandleBeingInChestRange> {
         public delegate void HandleBeingInChestRange(Orig orig, Player self);
         public delegate void Orig(Player self);
 
-        public override MethodBase ModifiedMethod => typeof(Player).GetCachedMethod("HandleBeingInChestRange");
+        public override MethodBase ModifiedMethod => typeof(Player).GetCachedMethod(nameof(HandleBeingInChestRange));
 
             protected override HandleBeingInChestRange PatchMethod => (orig, self) =>
             {

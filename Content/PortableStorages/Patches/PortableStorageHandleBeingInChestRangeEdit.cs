@@ -3,17 +3,11 @@ using Microsoft.Xna.Framework;
 using Mono.Cecil.Cil;
 using MonoMod.Cil;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 using TeaFramework.Features.Patching;
 using TeaFramework.Utilities;
 using Terraria;
-using Terraria.Audio;
 using Terraria.DataStructures;
-using Terraria.ID;
 
 namespace AdLibitum.Content.PortableStorages.Patches
 {
@@ -25,11 +19,11 @@ namespace AdLibitum.Content.PortableStorages.Patches
             ILCursor c = new(il);
 
             if (!c.TryGotoNext(MoveType.After, instr => instr.MatchLdloc(0)))
-                throw new Exception("Error applying patch \"PortableStorageHandleBeingInChestRangeEdit\": Unable to match stloc instruction.");
+                throw new Exception("Error applying patch \"PortableStorageHandleBeingInChestRangeEdit\": Unable to match ldloc instruction.");
             
             c.Emit(OpCodes.Ldarg_0);
-            c.EmitDelegate<Func<int, Player, int>>((loc0, self) => {
-                int result = loc0;
+            c.EmitDelegate<Func<bool, Player, bool>>((loc0, self) => {
+                bool result = loc0;
 
                 foreach (ModdedPortableStorage mps in PortableStorageSystem.ModdedPortableStorages)
                 {
@@ -38,12 +32,11 @@ namespace AdLibitum.Content.PortableStorages.Patches
                     
                     if (projIndex >= 0)
                     {
-                        result = 1;
+                        result = true;
 
                         if (!Main.projectile[projIndex].active || Main.projectile[projIndex].type != mps.ProjId)
                         {
-                            SoundEngine.PlaySound(in SoundID.Item130);
-                            self.chest = -1;
+                            Main.PlayInteractiveProjectileOpenCloseSound(Main.projectile[projIndex].type, open: false); self.chest = -1;
                             Recipe.FindRecipes();
                         }
                         else
@@ -57,7 +50,7 @@ namespace AdLibitum.Content.PortableStorages.Patches
                             {
                                 if (self.chest != -1)
                                 {
-                                    SoundEngine.PlaySound(in SoundID.Item130);
+                                    Main.PlayInteractiveProjectileOpenCloseSound(Main.projectile[projIndex].type, open: false);
                                 }
                                 self.chest = -1;
                                 Recipe.FindRecipes();
@@ -65,7 +58,8 @@ namespace AdLibitum.Content.PortableStorages.Patches
                         }
                     }
                 }
-                
+
+                Main.NewText(result);
                 return result;
             });
         };

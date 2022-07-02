@@ -1,7 +1,6 @@
 ﻿using AdLibitum.Content.PortableStorages.Misc;
 using JetBrains.Annotations;
 using System.IO;
-using System.Linq;
 using TeaFramework.API.Features.Packets;
 using Terraria;
 using Terraria.DataStructures;

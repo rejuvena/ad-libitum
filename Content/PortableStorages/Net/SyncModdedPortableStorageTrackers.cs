@@ -1,17 +1,17 @@
 ﻿using AdLibitum.Content.PortableStorages.Misc;
 using JetBrains.Annotations;
-using System;
 using System.IO;
 using TeaFramework.API.Features.Packets;
 using Terraria;
-using Terraria.ModLoader;
 
 namespace AdLibitum.Content.PortableStorages.Net
 {
     [UsedImplicitly]
-    public class SyncModdedPortableStorageTrackers : IPacketHandler<ModdedPortableStorageTrackersData>
+    public class SyncModdedPortableStorageTrackers : IPacketHandlerWithData<ModdedPortableStorageTrackersData>
     {
-        public void WritePacket(BinaryWriter writer, ModdedPortableStorageTrackersData packetData) {
+        public byte Id { get; set; }
+
+        public void Write(BinaryWriter writer, ModdedPortableStorageTrackersData packetData) {
             packetData.SerializePacket(writer);
         }
 
@@ -24,12 +24,6 @@ namespace AdLibitum.Content.PortableStorages.Net
                 ModdedPortableStorage mps = PortableStorageSystem.ModdedPortableStorages[i];
                 mps.GetTrackedProjRef(p).Value = data.PortableStoragesData[i];
             }
-        }
-
-        public void Load(Mod mod) {
-        }
-
-        public void Unload() {
         }
     }
 }
