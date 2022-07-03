@@ -59,7 +59,6 @@ namespace AdLibitum.Content.PortableStorages.Patches
                     }
                 }
 
-                Main.NewText(result);
                 return result;
             });
         };

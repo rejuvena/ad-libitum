@@ -1,4 +1,5 @@
-﻿using AdLibitum.Content.PortableStorages.Misc;
+﻿using AdLibitum.Content.PortableStorages.Items;
+using AdLibitum.Content.PortableStorages.Misc;
 using AdLibitum.Content.PortableStorages.Net;
 using AdLibitum.Content.PortableStorages.Projectiles;
 using JetBrains.Annotations;
@@ -21,10 +22,10 @@ namespace AdLibitum.Content.PortableStorages
             ModdedPortableStorages = new();
 
             // TODO better sounds?
-            ModdedPortableStorages.Add(new(-3, ModContent.ProjectileType<FlyingSafe>(), SoundID.Tink, null,
+            ModdedPortableStorages.Add(new(-3, ModContent.ProjectileType<FlyingSafe>(), ModContent.ItemType<GrotesqueStatuette>(), SoundID.Tink, null,
                 (player) => player.GetModPlayer<PortableStoragePlayer>().SafeTracker));
-            
-            ModdedPortableStorages.Add(new(-4, 0, SoundID.MaxMana, null,
+
+            ModdedPortableStorages.Add(new(-4, 0, 0, SoundID.MaxMana, null,
                 (player) => player.GetModPlayer<PortableStoragePlayer>().DefendersForgeTracker));
         }
 
