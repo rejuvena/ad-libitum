@@ -1,4 +1,12 @@
-﻿[Config]
+﻿[ItemName]
+GrotesqueStatuette = "Grotesque Statuette"
+DefendersGem = "Defender's Gem"
+
+[ItemTooltip]
+GrotesqueStatuette = "Summons a flying safe to store your items\n'Warm to the touch'"
+DefendersGem = "Summons an ethereal chest to store your items\n'A shard of something greater'"
+
+[Config]
 # Message displayed when the user editing the config cannot save it.
 InsufficientPermissions = "You are not the server host, and thus are not able to modify server configuration!"
 

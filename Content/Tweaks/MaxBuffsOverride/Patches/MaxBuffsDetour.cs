@@ -4,7 +4,7 @@ using System.Reflection;
 using AdLibitum.Configuration.Server;
 using JetBrains.Annotations;
 using TeaFramework.Features.Patching;
-using TeaFramework.Features.Utility;
+using TeaFramework.Utilities;
 using Terraria;
 using Terraria.ModLoader;
 
@@ -17,7 +17,7 @@ namespace AdLibitum.Content.Tweaks.MaxBuffsOverride.Patches
 
         public delegate int Orig();
 
-        public override MethodInfo ModifiedMethod { get; } = typeof(Player).GetCachedProperty(nameof(MaxBuffs)).GetMethod;
+        public override MethodBase ModifiedMethod { get; } = typeof(Player).GetCachedProperty(nameof(MaxBuffs)).GetMethod;
 
         protected override MaxBuffs PatchMethod { get; } = orig => {
             if (!StandardServerConfig.Config.MaxBuffSlotsEnabled) return orig();
