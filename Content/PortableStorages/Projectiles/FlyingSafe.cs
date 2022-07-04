@@ -32,24 +32,7 @@ namespace AdLibitum.Content.PortableStorages.Projectiles
                 }
             }
 
-            Main.CurrentFrameFlags.HadAnActiveInteractibleProjectile = true;
-            if (Projectile.owner == Main.myPlayer)
-            {
-                for (int num842 = 0; num842 < 1000; num842++)
-                {
-                    if (num842 != Projectile.whoAmI && Main.projectile[num842].active && Main.projectile[num842].owner == Projectile.owner && Main.projectile[num842].type == Projectile.type)
-                    {
-                        if (Projectile.timeLeft >= Main.projectile[num842].timeLeft)
-                        {
-                            Main.projectile[num842].Kill();
-                        }
-                        else
-                        {
-                            Projectile.Kill();
-                        }
-                    }
-                }
-            }
+            base.AI();
 
             if (Projectile.ai[0] == 0f)
             {
@@ -81,7 +64,7 @@ namespace AdLibitum.Content.PortableStorages.Projectiles
             Projectile.spriteDirection = Projectile.direction;
 
             Projectile.ai[1] += 1f;
-            float num843 = 0.005f;
+            float num843 = 0.0065f;
 
             if (Projectile.ai[1] > 0f)
             {

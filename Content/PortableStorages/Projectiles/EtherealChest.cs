@@ -2,6 +2,7 @@
 using Microsoft.Xna.Framework.Graphics;
 using ReLogic.Content;
 using System;
+using TeaFramework.Features.ID;
 using Terraria;
 using Terraria.ModLoader;
 
@@ -21,24 +22,26 @@ namespace AdLibitum.Content.PortableStorages.Projectiles
         }
 
         public override void AI() {
-            Main.CurrentFrameFlags.HadAnActiveInteractibleProjectile = true;
-            if (Projectile.owner == Main.myPlayer)
+            int frameThreshold = 4;
+
+            if (Main.player[Projectile.owner].chest == BankID.DefendersForge)
             {
-                for (int num842 = 0; num842 < 1000; num842++)
-                {
-                    if (num842 != Projectile.whoAmI && Main.projectile[num842].active && Main.projectile[num842].owner == Projectile.owner && Main.projectile[num842].type == Projectile.type)
-                    {
-                        if (Projectile.timeLeft >= Main.projectile[num842].timeLeft)
-                        {
-                            Main.projectile[num842].Kill();
-                        }
-                        else
-                        {
-                            Projectile.Kill();
-                        }
-                    }
-                }
+                if (++Projectile.frameCounter % frameThreshold == 0)
+                    Projectile.frame++;
+
+                Projectile.frameCounter = Math.Min(Projectile.frameCounter, 9);
             }
+            else
+            {
+                if (--Projectile.frameCounter % frameThreshold == 0)
+                    Projectile.frame--;
+
+                Projectile.frameCounter = Math.Max(Projectile.frameCounter, 0);
+            }
+
+            Projectile.frame = (int) MathHelper.Clamp(Projectile.frame, 0, 2);
+
+            base.AI();
 
             if (Projectile.ai[0] == 0f)
             {
@@ -70,7 +73,7 @@ namespace AdLibitum.Content.PortableStorages.Projectiles
             Projectile.spriteDirection = Projectile.direction;
 
             Projectile.ai[1] += 1f;
-            float num843 = 0.005f;
+            float num843 = 0.004f;
 
             if (Projectile.ai[1] > 0f)
             {
@@ -97,7 +100,9 @@ namespace AdLibitum.Content.PortableStorages.Projectiles
 
             Main.spriteBatch.End();
             Main.spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.Additive, Main.DefaultSamplerState, DepthStencilState.None, RasterizerState.CullCounterClockwise, null, Main.GameViewMatrix.ZoomMatrix);
-            Main.EntitySpriteDraw(portal, Projectile.Center - Main.screenPosition + new Vector2(0, 6), null, Color.DarkMagenta, rotation, origin, 0.75f, SpriteEffects.None, 0);
+
+                Main.EntitySpriteDraw(portal, Projectile.Center - Main.screenPosition + new Vector2(0, 6), null, Color.DarkMagenta, rotation, origin, 0.75f, SpriteEffects.None, 0);
+
 
             Main.spriteBatch.End();
             Main.spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend, Main.DefaultSamplerState, DepthStencilState.None, RasterizerState.CullCounterClockwise, null, Main.GameViewMatrix.ZoomMatrix);

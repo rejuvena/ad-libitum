@@ -1,16 +1,14 @@
 ﻿using AdLibitum.Content.PortableStorages.Misc;
-using System;
-using System.Collections.Generic;
+using JetBrains.Annotations;
 using System.Linq;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 using TeaFramework.Features.Patching;
 using TeaFramework.Utilities;
 using Terraria;
 
 namespace AdLibitum.Content.PortableStorages.Patches
 {
+    [UsedImplicitly]
     public class PortableStorageGetContainerIndexDetour : Patch<PortableStorageGetContainerIndexDetour.TryGetContainerIndex>
     {
         public delegate bool TryGetContainerIndex(Orig orig, Projectile self, out int containerIndex);

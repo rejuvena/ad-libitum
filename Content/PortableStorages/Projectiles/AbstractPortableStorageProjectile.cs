@@ -17,6 +17,27 @@ namespace AdLibitum.Content.PortableStorages.Projectiles
     {
         public ModdedPortableStorage MyPortableStorage => PortableStorageSystem.ModdedPortableStorages.First(x => x.ProjId == Projectile.type);
 
+        public override void AI() {
+            Main.CurrentFrameFlags.HadAnActiveInteractibleProjectile = true;
+            if (Projectile.owner == Main.myPlayer)
+            {
+                for (int num842 = 0; num842 < 1000; num842++)
+                {
+                    if (num842 != Projectile.whoAmI && Main.projectile[num842].active && Main.projectile[num842].owner == Projectile.owner && Main.projectile[num842].type == Projectile.type)
+                    {
+                        if (Projectile.timeLeft >= Main.projectile[num842].timeLeft)
+                        {
+                            Main.projectile[num842].Kill();
+                        }
+                        else
+                        {
+                            Projectile.Kill();
+                        }
+                    }
+                }
+            }
+        }
+
         public override void PostDraw(Color lightColor) {
             int context = TryInteractingWithPortableStorage();
             
