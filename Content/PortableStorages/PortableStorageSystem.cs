@@ -25,7 +25,7 @@ namespace AdLibitum.Content.PortableStorages
             ModdedPortableStorages.Add(new(-3, ModContent.ProjectileType<FlyingSafe>(), ModContent.ItemType<GrotesqueStatuette>(), SoundID.Tink, null,
                 (player) => player.GetModPlayer<PortableStoragePlayer>().SafeTracker));
 
-            ModdedPortableStorages.Add(new(-4, 0, 0, SoundID.MaxMana, null,
+            ModdedPortableStorages.Add(new(-4, ModContent.ProjectileType<EtherealChest>(), ModContent.ItemType<DefendersGem>(), SoundID.MaxMana, null,
                 (player) => player.GetModPlayer<PortableStoragePlayer>().DefendersForgeTracker));
         }
 

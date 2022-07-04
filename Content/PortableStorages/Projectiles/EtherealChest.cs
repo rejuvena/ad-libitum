@@ -1,37 +1,26 @@
-﻿using JetBrains.Annotations;
+﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
+using ReLogic.Content;
+using System;
 using Terraria;
+using Terraria.ModLoader;
 
 namespace AdLibitum.Content.PortableStorages.Projectiles
 {
-    [UsedImplicitly]
-    public class FlyingSafe : AbstractPortableStorageProjectile
+    public class EtherealChest : AbstractPortableStorageProjectile
     {
         public override void SetStaticDefaults() {
-            Main.projFrames[Type] = 5;
+            Main.projFrames[Type] = 3;
         }
 
         public override void SetDefaults() {
-            Projectile.width = 42;
-            Projectile.height = 50;
+            Projectile.width = 32;
+            Projectile.height = 36;
             Projectile.tileCollide = false;
             Projectile.timeLeft = 10800;
         }
 
         public override void AI() {
-            int frameTime = 4;
-
-            if (++Projectile.frameCounter % frameTime == 0)
-            {
-                if (Projectile.frameCounter <= 16)
-                    Projectile.frame++;
-
-                if (Projectile.frameCounter == 20)
-                {
-                    Projectile.frameCounter = 0;
-                    Projectile.frame = 0;
-                }
-            }
-
             Main.CurrentFrameFlags.HadAnActiveInteractibleProjectile = true;
             if (Projectile.owner == Main.myPlayer)
             {
@@ -95,6 +84,25 @@ namespace AdLibitum.Content.PortableStorages.Projectiles
             {
                 Projectile.ai[1] *= -1f;
             }
+        }
+
+        public override Color? GetAlpha(Color lightColor) {
+            return Color.White;
+        }
+
+        public override bool PreDraw(ref Color lightColor) {
+            Texture2D portal = ModContent.Request<Texture2D>(Texture + "_Portal", AssetRequestMode.ImmediateLoad).Value;
+            float rotation = Main.GlobalTimeWrappedHourly * 5;
+            Vector2 origin = portal.Size() * 0.5f;
+
+            Main.spriteBatch.End();
+            Main.spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.Additive, Main.DefaultSamplerState, DepthStencilState.None, RasterizerState.CullCounterClockwise, null, Main.GameViewMatrix.ZoomMatrix);
+            Main.EntitySpriteDraw(portal, Projectile.Center - Main.screenPosition + new Vector2(0, 6), null, Color.DarkMagenta, rotation, origin, 0.75f, SpriteEffects.None, 0);
+
+            Main.spriteBatch.End();
+            Main.spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend, Main.DefaultSamplerState, DepthStencilState.None, RasterizerState.CullCounterClockwise, null, Main.GameViewMatrix.ZoomMatrix);
+
+            return true;
         }
     }
 }
