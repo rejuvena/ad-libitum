@@ -10,7 +10,7 @@ using Terraria.ModLoader;
 namespace AdLibitum.Content.PortableStorages.Items
 {
     [UsedImplicitly]
-    public class DefendersGem : ModItem
+    public class DefendersGem : AbstractPortableStorageItem
     {
         public override void SetStaticDefaults() {
             ItemID.Sets.ItemNoGravity[Type] = true;

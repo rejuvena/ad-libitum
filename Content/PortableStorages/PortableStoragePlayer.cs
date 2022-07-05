@@ -1,7 +1,6 @@
 ﻿using JetBrains.Annotations;
 using Terraria;
 using Terraria.DataStructures;
-using Terraria.GameContent.Events;
 using Terraria.ModLoader;
 
 namespace AdLibitum.Content.PortableStorages

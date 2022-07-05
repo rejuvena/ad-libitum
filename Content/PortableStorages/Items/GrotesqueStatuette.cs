@@ -7,7 +7,7 @@ using Terraria.ModLoader;
 namespace AdLibitum.Content.PortableStorages.Items
 {
     [UsedImplicitly]
-    public class GrotesqueStatuette : ModItem
+    public class GrotesqueStatuette : AbstractPortableStorageItem
     {
         public override void SetDefaults() {
             Item.width = 26;

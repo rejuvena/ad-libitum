@@ -1,4 +1,5 @@
-﻿using AdLibitum.Content.PortableStorages.Items;
+﻿using AdLibitum.Configuration.Server;
+using AdLibitum.Content.PortableStorages.Items;
 using JetBrains.Annotations;
 using Mono.Cecil.Cil;
 using MonoMod.Cil;
@@ -25,7 +26,9 @@ namespace AdLibitum.Content.PortableStorages.Patches
 
             c.Emit(OpCodes.Ldloc_0);
             c.EmitDelegate<Action<int>>((i) => {
-                if (!NPC.downedMechBossAny)
+                // - Drop only after OOA t2
+                // - Don't drop if the config is disabled
+                if (!NPC.downedMechBossAny || !StandardServerConfig.Config.ItemToggles.PortableStorages)
                     return;
 
                 NPC npc = Main.npc[i];
