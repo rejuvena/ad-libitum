@@ -21,16 +21,6 @@ namespace AdLibitum.Content.PortableStorages
             DefendersForgeTracker.Value.Clear();
         }
 
-        public override void PreUpdate() {
-            NPC.downedMechBossAny = true;
-
-            if (Main.gameMenu || Main.dayTime)
-                return;
-
-            NPC.NewNPC(Player.GetSource_Accessory(new Item()), (int)Player.position.X, (int)Player.position.Y, Terraria.ID.NPCID.DD2EterniaCrystal);
-            DD2Event.DropMedals(20);
-        }
-
         // These shouldn't be needed because I'm hijacking Terraria's netmessage
         /*public override void SendClientChanges(ModPlayer clientPlayer) {
             base.SendClientChanges(clientPlayer);
