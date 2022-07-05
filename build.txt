@@ -1,4 +1,4 @@
-﻿displayName = Ad Libitum - Configurable Solution
+﻿displayName = Ad Libitum - Configurable QoL
 author = Tomat & pbone, Rejuvena Team
 version = 1.0.0
 modReferences = TeaFramework
