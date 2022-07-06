@@ -1,4 +1,5 @@
-﻿using AdLibitum.Content.PortableStorages.Misc;
+﻿using AdLibitum.Configuration.Server;
+using AdLibitum.Content.PortableStorages.Misc;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using ReLogic.Content;
@@ -18,6 +19,12 @@ namespace AdLibitum.Content.PortableStorages.Projectiles
         public ModdedPortableStorage MyPortableStorage => PortableStorageSystem.ModdedPortableStorages.First(x => x.ProjId == Projectile.type);
 
         public override void AI() {
+            if (!StandardServerConfig.Config.ItemToggles.PortableStorages)
+            {
+                Projectile.Kill();
+                return;
+            }
+
             Main.CurrentFrameFlags.HadAnActiveInteractibleProjectile = true;
             if (Projectile.owner == Main.myPlayer)
             {

@@ -6,20 +6,34 @@ DefendersGem = "Defender's Gem"
 GrotesqueStatuette = "Summons a flying safe to store your items\n'Warm to the touch'"
 DefendersGem = "Summons an ethereal chest to store your items\n'A shard of something greater'"
 
+[MiscTooltipFragments] # Tooltip fragments.
+ItemDisabledNotice = "NOTE: This item has been disabled!\nIf you would like to use it, enable \"{0}\" in Ad Libitum's config."
+
 [Config]
 # Message displayed when the user editing the config cannot save it.
 InsufficientPermissions = "You are not the server host, and thus are not able to modify server configuration!"
 
-[Config.Titles] # Config titles.
+[Config.Title] # Config titles.
 StandardServerName = "General Server Config"
+
+[Config.Page] # Config pages.
+Tweaks = "Tweaks"
+ItemToggles = "Item Toggles"
 
 [Config.Headers] # Config headers.
 BuffConfiguration = "Buff Configuration"
+ItemToggles = "Item Toggles"
 
-[Config.ItemName] # Config item names.
-MaxBuffSlotsEnabled = "Configurable Buff Slot Limit"
-MaxBuffSlots = "Maximum Buff Slots"
+[Config.Option] # Config options.
 
-[Config.ItemTooltip] # Config item tooltips.
-MaxBuffSlotsEnabled = "Determines whether Ad Libitum should forcefully override the buff slot limit to use its configurable slot count.\nIf unchecked, your buff slot limit will not be changed by Ad Libitum.\nIf checked, Ad Libitum will hijack tModLoader's buff slot logic."
-MaxBuffSlots = "Configures the maximum amount of buffs a player may use.\nOnly works if \"Configurable Buff Slot Limit\" is enabled."
+# TWEAKS
+MaxBuffSlotsEnabled.Label = "Configurable Buff Slot Limit"
+MaxBuffSlotsEnabled.Tooltip = "Determines whether Ad Libitum should forcefully override the buff slot limit to use its configurable slot count.\nIf unchecked, your buff slot limit will not be changed by Ad Libitum.\nIf checked, Ad Libitum will hijack tModLoader's buff slot logic."
+
+MaxBuffSlots.Label = "Maximum Buff Slots"
+MaxBuffSlots.Tooltip = "Configures the maximum amount of buffs a player may use.\nOnly works if \"Configurable Buff Slot Limit\" is enabled."
+
+
+# ITEM TOGGLES
+PortableStorages.Label = "Portable Storages"
+PortableStorages.Tooltip = "Enable or disable portable storage items, which allow you to access portable storages on the go."

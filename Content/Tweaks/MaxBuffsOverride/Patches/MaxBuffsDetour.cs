@@ -20,7 +20,7 @@ namespace AdLibitum.Content.Tweaks.MaxBuffsOverride.Patches
         public override MethodBase ModifiedMethod { get; } = typeof(Player).GetCachedProperty(nameof(MaxBuffs)).GetMethod;
 
         protected override MaxBuffs PatchMethod { get; } = orig => {
-            if (!StandardServerConfig.Config.MaxBuffSlotsEnabled) return orig();
+            if (!StandardServerConfig.Config.Tweaks.MaxBuffSlotsEnabled) return orig();
 
             // Objective: override the normal buff limit calculation to use our specialized calculations.
             // Justification:
@@ -35,7 +35,7 @@ namespace AdLibitum.Content.Tweaks.MaxBuffsOverride.Patches
             int additionalSlots = orig() - normalMax;
 
             // Return the new limit, which is our config plus any additional mod buff slots not added through Mod.ExtraPlayerBuffSlots.
-            return (int) Math.Max(0, StandardServerConfig.Config.MaxBuffSlots + additionalSlots);
+            return (int) Math.Max(0, StandardServerConfig.Config.Tweaks.MaxBuffSlots + additionalSlots);
         };
     }
 }

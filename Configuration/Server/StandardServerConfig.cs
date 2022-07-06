@@ -3,20 +3,37 @@ using Terraria.ModLoader.Config;
 
 namespace AdLibitum.Configuration.Server
 {
-    [LibitumLabel("Config.Titles.StandardServerName")]
+    [LibitumLabel("Config.Title.StandardServerName")]
     public sealed class StandardServerConfig : AbstractServerConfig<StandardServerConfig>
     {
-        [Header("Config.Headers.BuffConfiguration")]
-        [LibitumLabel("Config.ItemName.MaxBuffSlotsEnabled")]
-        [LibitumTooltip("Config.ItemTooltip.MaxBuffSlotsEnabled")]
-        [DefaultValue(true)]
-        public bool MaxBuffSlotsEnabled { get; set; } = true;
+        [LibitumLabel("Config.Page.Tweaks")]
+        [SeparatePage]
+        public TweaksConf Tweaks = new();
+        public class TweaksConf
+        {
+            //[Header("Config.Headers.BuffConfiguration")]
+            [LibitumLabel("Config.Option.MaxBuffSlotsEnabled.Label")]
+            [LibitumTooltip("Config.Option.MaxBuffSlotsEnabled.Tooltip")]
+            [DefaultValue(true)]
+            public bool MaxBuffSlotsEnabled { get; set; } = true;
 
-        [LibitumLabel("Config.ItemName.MaxBuffSlots")]
-        [LibitumTooltip("Config.ItemTooltip.MaxBuffSlots")]
-        [Slider]
-        [Range(0, 100)]
-        [DefaultValue(22)]
-        public uint MaxBuffSlots { get; set; } = 22;
+            [LibitumLabel("Config.Option.MaxBuffSlots.Label")]
+            [LibitumTooltip("Config.Option.MaxBuffSlots.Tooltip")]
+            [Slider]
+            [Range(0, 100)]
+            [DefaultValue(22)]
+            public uint MaxBuffSlots { get; set; } = 22;
+        }
+
+        [LibitumLabel("Config.Page.ItemToggles")]
+        [SeparatePage]
+        public ItemTogglesConf ItemToggles = new();
+        public class ItemTogglesConf
+        {
+            [LibitumLabel("Config.Option.PortableStorages.Label")]
+            [LibitumTooltip("Config.Option.PortableStorages.Tooltip")]
+            [DefaultValue(true)]
+            public bool PortableStorages = true;
+        }
     }
 }
