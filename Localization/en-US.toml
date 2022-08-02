@@ -34,7 +34,7 @@ MaxBuffSlots.Label = "Maximum Buff Slots"
 MaxBuffSlots.Tooltip = "Configures the maximum amount of buffs a player may use.\nOnly works if \"Configurable Buff Slot Limit\" is enabled."
 
 BossBagSellPriceAveraging.Label = "Treasure Bag Sell Price Averaging"
-BossBagSellPriceAveraging.Tooltip = "If enabled, Treasure Bags will have their sell prices auto-generated from the average sell price of their contents.\nThe price may very slightly when reloaded."
+BossBagSellPriceAveraging.Tooltip = "If enabled, Treasure Bags will have their sell prices auto-generated from the average sell price of their contents.\nThe price may vary slightly when reloaded."
 
 
 # ITEM TOGGLES
