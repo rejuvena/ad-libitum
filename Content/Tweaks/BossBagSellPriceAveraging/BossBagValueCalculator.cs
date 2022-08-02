@@ -1,7 +1,7 @@
-﻿using AdLibitum.Utilities.Extensions;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using Terraria;
+using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace AdLibitum.Content.Tweaks.BossBagSellPriceAveraging
@@ -23,11 +23,13 @@ namespace AdLibitum.Content.Tweaks.BossBagSellPriceAveraging
                 foreach (int v in RealValues)
                     value += v;
 
-                value /= Simulations;
+                value /= (float)Simulations;
 
                 return value;
             }
         }
+
+        public const int DUMMY_ITEM_INDEX = 100;
 
         public BossBagInfo CurrentBagInfo;
         public Dictionary<int, int> AveragedValues = new();
@@ -35,12 +37,12 @@ namespace AdLibitum.Content.Tweaks.BossBagSellPriceAveraging
         public int HandleQuickSpawnItem(int type, int stack) {
             Item item = new(type, stack);
             item.SetDefaults(type);
-            Main.item[0] = item;
+            Main.item[DUMMY_ITEM_INDEX] = item;
 
             int realValue = item.value * item.stack;
             CurrentBagInfo.RealValues.Add(realValue);
 
-            return 0;
+            return DUMMY_ITEM_INDEX;
         }
 
         public void CalculateAll() {
@@ -49,7 +51,7 @@ namespace AdLibitum.Content.Tweaks.BossBagSellPriceAveraging
                 // Item item = ContentSamples.ItemsByType[i]; // THIS CRASHES FOR SOME REASON. UGH I LOVE TML
                 Item item = new(i);
 
-                if (!item.IsBossBag())
+                if (!ItemID.Sets.BossBag[i])
                     continue;
 
                 Player dummy = new();
@@ -74,6 +76,8 @@ namespace AdLibitum.Content.Tweaks.BossBagSellPriceAveraging
                 if (success)
                     AveragedValues.Add(i, (int)CurrentBagInfo.GetAverageValue());
             }
+
+            Main.item[DUMMY_ITEM_INDEX] = new Item();
         }
     }
 }

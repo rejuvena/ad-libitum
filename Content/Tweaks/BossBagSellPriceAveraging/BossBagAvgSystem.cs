@@ -1,7 +1,4 @@
-﻿using AdLibitum.Content.Tweaks.BossBagSellPriceAveraging.Patches;
-using System.Linq;
-using TeaFramework.API.Features.Patching;
-using Terraria.ModLoader;
+﻿using Terraria.ModLoader;
 
 namespace AdLibitum.Content.Tweaks.BossBagSellPriceAveraging
 {
@@ -13,14 +10,8 @@ namespace AdLibitum.Content.Tweaks.BossBagSellPriceAveraging
         public static BossBagValueCalculator BossBagValueCalculator;
 
         public override void PostSetupContent() {
-            while (true)
-            {
-                if (Mod.GetContent<IPatch>().FirstOrDefault(x => x.GetType() == typeof(BossBagAvgRedirectQuickSpawnItemDetour)) is not null)
-                    break;
-            }
-
-            BossBagValueCalculator = new();
             BossBagSimulation = true;
+            BossBagValueCalculator = new();
             BossBagValueCalculator.CalculateAll();
             BossBagSimulation = false;
         }
