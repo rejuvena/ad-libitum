@@ -8,11 +8,11 @@ namespace AdLibitum.Content.Tweaks.BossBagSellPriceAveraging
 {
     public class BossBagValueCalculator
     {
-        public struct BossBagInfo {
+        public class BossBagSimulationInfo {
             public int Simulations;
             public List<int> RealValues;
 
-            public BossBagInfo(int simulations) {
+            public BossBagSimulationInfo(int simulations) {
                 Simulations = simulations;
                 RealValues = new();
             }
@@ -31,7 +31,7 @@ namespace AdLibitum.Content.Tweaks.BossBagSellPriceAveraging
 
         public const int DUMMY_ITEM_INDEX = 100;
 
-        public BossBagInfo CurrentBagInfo;
+        public BossBagSimulationInfo CurrentBagInfo;
         public Dictionary<int, int> AveragedValues = new();
 
         public int HandleQuickSpawnItem(int type, int stack) {
@@ -63,6 +63,8 @@ namespace AdLibitum.Content.Tweaks.BossBagSellPriceAveraging
                     try
                     {
                         dummy.OpenBossBag(i);
+                        // TODO: UNCOMMENT THIS ONCE TML UPDATES
+                        //dummy.DropFromItem(i);
                     }
                     catch (Exception e)
                     {
