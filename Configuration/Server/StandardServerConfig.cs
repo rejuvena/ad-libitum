@@ -23,6 +23,11 @@ namespace AdLibitum.Configuration.Server
             [Range(0, 100)]
             [DefaultValue(22)]
             public uint MaxBuffSlots { get; set; } = 22;
+
+            [LibitumLabel("Config.Option.BossBagSellPriceAveraging.Label")]
+            [LibitumTooltip("Config.Option.BossBagSellPriceAveraging.Tooltip")]
+            [DefaultValue(true)]
+            public bool BossBagSellPriceAveraging = true;
         }
 
         [LibitumLabel("Config.Page.ItemToggles")]
