@@ -63,8 +63,7 @@ namespace AdLibitum.Content.Tweaks.BossBagSellPriceAveraging
                     try
                     {
                         dummy.OpenBossBag(i);
-                        // TODO: UNCOMMENT THIS ONCE TML UPDATES
-                        //dummy.DropFromItem(i);
+                        dummy.DropFromItem(i);
                     }
                     catch (Exception e)
                     {
