@@ -28,6 +28,15 @@ namespace AdLibitum.Configuration.Server
             [LibitumTooltip("Config.Option.BossBagSellPriceAveraging.Tooltip")]
             [DefaultValue(true)]
             public bool BossBagSellPriceAveraging = true;
+
+            [LibitumLabel("Config.Option.RespawnTimeModifier.Label")]
+            [LibitumTooltip("Config.Option.RespawnTimeModifier.Tooltip")]
+            [Slider]
+            [Range(1, 10)]
+            [Increment(1f)]
+            [DrawTicks]
+            [DefaultValue(1f)]
+            public int RespawnTimeModifier = 1;
         }
 
         [LibitumLabel("Config.Page.ItemToggles")]
