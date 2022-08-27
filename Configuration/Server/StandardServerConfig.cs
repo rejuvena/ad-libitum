@@ -32,11 +32,10 @@ namespace AdLibitum.Configuration.Server
             [LibitumLabel("Config.Option.RespawnTimeModifier.Label")]
             [LibitumTooltip("Config.Option.RespawnTimeModifier.Tooltip")]
             [Slider]
-            [Range(1, 10)]
-            [Increment(1f)]
-            [DrawTicks]
-            [DefaultValue(1f)]
-            public int RespawnTimeModifier = 1;
+            [Range(0, 200)]
+            [Increment(1)]
+            [DefaultValue(100)]
+            public int RespawnTimeModifier = 100;
         }
 
         [LibitumLabel("Config.Page.ItemToggles")]

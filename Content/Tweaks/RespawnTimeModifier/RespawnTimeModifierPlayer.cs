@@ -12,12 +12,20 @@ namespace AdLibitum.Content.Tweaks.RespawnTimeModifier
             if (AmICloseToRespawnTimeAffectingBoss())
                 return;
 
-            int targetRespawnTime = MaxRespawnTime() / StandardServerConfig.Config.Tweaks.RespawnTimeModifier;
-            if (Player.respawnTimer > targetRespawnTime)
+            int respawnTimeMod = StandardServerConfig.Config.Tweaks.RespawnTimeModifier;
+
+            // 0 / 100 == 1
+            if (respawnTimeMod == 0)
+                Player.respawnTimer = 0;
+
+            int targetRespawnTime = (int)(MaxRespawnTime() * (respawnTimeMod / 100f));
+
+            if ((Player.respawnTimer > targetRespawnTime && respawnTimeMod > 100) ||
+                (Player.respawnTimer < targetRespawnTime && respawnTimeMod < 100))
                 Player.respawnTimer = targetRespawnTime;
         }
 
-        private int MaxRespawnTime() => (int) (600f * (Main.expertMode ? 1.5f : 1f));
+        private float MaxRespawnTime() => 600f * (Main.expertMode ? 1.5f : 1f);
 
         private bool AmICloseToRespawnTimeAffectingBoss() {
             // From Player.KillMe
