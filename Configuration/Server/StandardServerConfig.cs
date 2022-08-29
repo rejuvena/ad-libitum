@@ -1,4 +1,5 @@
-﻿using System.ComponentModel;
+﻿using System;
+using System.ComponentModel;
 using Terraria.ModLoader.Config;
 
 namespace AdLibitum.Configuration.Server
@@ -28,6 +29,19 @@ namespace AdLibitum.Configuration.Server
             [LibitumTooltip("Config.Option.BossBagSellPriceAveraging.Tooltip")]
             [DefaultValue(true)]
             public bool BossBagSellPriceAveraging = true;
+
+            [LibitumLabel("Config.Option.RespawnTimeModifier.Label")]
+            [LibitumTooltip("Config.Option.RespawnTimeModifier.Tooltip")]
+            [Slider]
+            [Range(0f, 2f)]
+            [Increment(0.1f)]
+            [DefaultValue(1f)]
+            public float RespawnTimeModifier {
+                get => respawnTimeModifier;
+                set => respawnTimeModifier = (float)Math.Round((float)value, 1);
+            }
+
+            private float respawnTimeModifier;
         }
 
         [LibitumLabel("Config.Page.ItemToggles")]
