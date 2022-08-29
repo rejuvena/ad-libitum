@@ -1,4 +1,5 @@
-﻿using System.ComponentModel;
+﻿using System;
+using System.ComponentModel;
 using Terraria.ModLoader.Config;
 
 namespace AdLibitum.Configuration.Server
@@ -32,10 +33,15 @@ namespace AdLibitum.Configuration.Server
             [LibitumLabel("Config.Option.RespawnTimeModifier.Label")]
             [LibitumTooltip("Config.Option.RespawnTimeModifier.Tooltip")]
             [Slider]
-            [Range(0, 200)]
-            [Increment(1)]
-            [DefaultValue(100)]
-            public int RespawnTimeModifier = 100;
+            [Range(0f, 2f)]
+            [Increment(0.1f)]
+            [DefaultValue(1f)]
+            public float RespawnTimeModifier {
+                get => respawnTimeModifier;
+                set => respawnTimeModifier = (float)Math.Round((float)value, 1);
+            }
+
+            private float respawnTimeModifier;
         }
 
         [LibitumLabel("Config.Page.ItemToggles")]

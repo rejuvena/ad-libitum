@@ -36,8 +36,8 @@ MaxBuffSlots.Tooltip = "Configures the maximum amount of buffs a player may use.
 BossBagSellPriceAveraging.Label = "Treasure Bag Sell Price Averaging"
 BossBagSellPriceAveraging.Tooltip = "If enabled, Treasure Bags will have their sell prices auto-generated from the average sell price of their contents.\nThe price may vary slightly when reloaded."
 
-RespawnTimeModifier.Label = "Respawn Time Modifier"
-RespawnTimeModifier.Tooltip = "A percent modifier to your respawn time.\nDoes not take effect during boss fights."
+RespawnTimeModifier.Label = "Respawn Time Multiplier"
+RespawnTimeModifier.Tooltip = "A multiplier to the time it takes to respawn.\nDoes not take effect during boss fights."
 
 
 # ITEM TOGGLES
